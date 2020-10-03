@@ -1,7 +1,6 @@
 package analyzer
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 )
@@ -19,7 +18,6 @@ func XSSCheck(r *http.Request) []string {
 	}
 
 	for k, v := range r.Form {
-		fmt.Println("gffffffffffffffffff", k, v)
 		str := strings.Join(v, " ")
 		if strings.Contains(str, "\"><img src onerror=alert()>") {
 			result = append(result, k + "=" + str)
@@ -27,7 +25,6 @@ func XSSCheck(r *http.Request) []string {
 	}
 
 	for k, v := range r.PostForm {
-		fmt.Println(k, v)
 		str := strings.Join(v, " ")
 		if strings.Contains(str, "\"><img src onerror=alert()>") {
 			result = append(result, k + "=" + str)

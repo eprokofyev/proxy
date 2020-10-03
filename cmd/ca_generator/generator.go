@@ -5,12 +5,12 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
-	"proxy/internal/pkg/proxy"
+	"proxy/internal/pkg/generation"
 )
 
 func main() {
-	keyFile  := path.Join("./", "ca-key.pem")
-	certFile := path.Join("./", "ca-cert.pem")
+	keyFile  := path.Join("./", "example-ca-key.pem")
+	certFile := path.Join("./", "example-ca-cert.pem")
 
 	err := os.MkdirAll(".", 0700)
 	if err != nil {
@@ -18,7 +18,7 @@ func main() {
 	}
 	h, _ := os.Hostname()
 
-	certPEM, keyPEM, err := proxy.GenCA(h)
+	certPEM, keyPEM, err := generation.GenCA(h)
 	if err != nil {
 		fmt.Println(err)
 		return

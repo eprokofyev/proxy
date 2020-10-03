@@ -36,7 +36,7 @@ func main() {
 	id := 0
 	d := database.NewDB(db, mu, id)
 
-	cer, err := tls.LoadX509KeyPair("nn-ca-cert.pem", "nn-ca-key.pem")
+	cer, err := tls.LoadX509KeyPair("example-ca-cert.pem", "example-ca-key.pem")
 	if err != nil {
 		log.Println( err)
 		return

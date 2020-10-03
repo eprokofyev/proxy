@@ -2,7 +2,6 @@ package database
 
 import (
 	"context"
-	"fmt"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -40,10 +39,10 @@ func (db *DB) Insert(req Record) (interface{}, error) {
 	db.mu.Unlock()
 	res, err := c.InsertOne(context.TODO(), req)
 	if err != nil {
-		fmt.Println("jfsds")
+
 		return 0, err
 	}
-	fmt.Println("nnnnnnnnnnnnnnnnnnn")
+
 	return res.InsertedID, nil
 }
 
